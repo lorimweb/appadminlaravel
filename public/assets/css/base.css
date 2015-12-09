@@ -1,0 +1,25 @@
+.edit{
+  color: #333;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.delete{
+  color: #333;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.default{
+  color: #333;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+.form-group input{
+    padding: 18px 10px;
+}
+.form-group .btn{
+    padding: 7px 15px;
+    font-weight: bold;
+}
