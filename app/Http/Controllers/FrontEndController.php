@@ -24,25 +24,28 @@ class FrontEndController extends Controller{
   			);
   		}
   		\App\Contato::create([
-  		'name' => $contato['nome'],
+  		'nome' => $contato['nome'],
+  		'assunto' => $contato['assunto'],
         'email' => $contato['email'],
         'msg' => $contato['msg'],
   		]);
 		Session::flash('type', 'success');
 		Session::flash('icon', 'check');
 		Session::flash('message', 'Mensagem enviada com sucesso, em breve entrarei em contato!');
-		return redirect('/');		
+		return redirect('/');
 	}
 
     // funçao para validar os dados da mensagem
     public function validator(array $data){
       $messages = [
 	      'nome.required' => 'Por favor digite seu nome',
+	      'assunto.required' => 'Por favor digite um assunto',
 	      'email.required' => 'Por favor digite seu email',
 	      'msg.required' => 'Por favor digite uma mensagem',
       ];
   		return Validator::make($data, [
 		'nome' => 'required|max:255',
+		'assunto' => 'required|max:255',
 		'email' => 'required|email',
 		'msg' => 'required',
   		], $messages);

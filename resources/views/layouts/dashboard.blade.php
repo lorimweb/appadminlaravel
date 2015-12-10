@@ -80,6 +80,13 @@
                     <li><a href="#"><span class="fa fa-money"></span> <span class="xn-text">Vendas</span></a></li>
                     <li><a href="#"><span class="fa fa-folder-open"></span> <span class="xn-text">Lançamentos</span></a></li>
                     <li class="xn-openable">
+                        <a href="#"><span class="fa fa-picture-o"></span> <span class="xn-text">Portfólio</span></a>
+                        <ul>
+                            <li><a href="{{url('portfolio/cadastro')}}"><span class="fa fa-plus-circle"></span> Novo</a></li>
+                            <li><a href="{{url('portfolio')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
+                        </ul>
+                    </li>
+                    <li class="xn-openable">
                         <a href="#"><span class="fa fa-user"></span> <span class="xn-text">Usuários</span></a>
                         <ul>
                             <li><a href="{{url('usuarios/cadastro')}}"><span class="fa fa-plus-circle"></span> Novo</a></li>
@@ -187,6 +194,8 @@
         <script type='text/javascript' src="{{asset('assets/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
         <script type='text/javascript' src="{{asset('assets/js/plugins/bootstrap/bootstrap-datepicker.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/plugins/owl/owl.carousel.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/js/plugins/fileinput/fileinput.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/js/plugins/filetree/jqueryFileTree.js')}}"></script>
 
         <script type="text/javascript" src="{{asset('assets/js/plugins/moment.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/plugins/daterangepicker/daterangepicker.js')}}"></script>

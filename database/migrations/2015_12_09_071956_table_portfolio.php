@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TableContato extends Migration
+class TablePortfolio extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class TableContato extends Migration
      */
     public function up()
     {
-        Schema::create('contato', function(Blueprint $table){
+        Schema::create('portfolio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('assunto');
-            $table->string('email');
-            $table->string('msg');
+            $table->string('titulo');
+            $table->string('job');
+            $table->string('url');
+            $table->string('img');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class TableContato extends Migration
      */
     public function down()
     {
-        Schema::drop('contato');
+        Schema::drop('portfolio');
     }
 }

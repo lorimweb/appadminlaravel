@@ -50,4 +50,11 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('clientes/editar/{id}', 'ClientesController@editar');
   Route::get('clientes/excluir/{id}', 'ClientesController@excluir');
   Route::post('clientes/atualizar', 'ClientesController@atualizar');
+  //Portfolio
+  Route::get('portfolio', 'PortfolioController@index');
+  Route::get('portfolio/cadastro', 'PortfolioController@cadastro');
+  Route::post('portfolio/inserir', 'PortfolioController@inserir');
+  Route::get('portfolio/editar/{id}', 'PortfolioController@editar');
+  Route::get('portfolio/excluir/{id}', 'PortfolioController@excluir');
+  Route::post('portfolio/atualizar', 'PortfolioController@atualizar');
 });

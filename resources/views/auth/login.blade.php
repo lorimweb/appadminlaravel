@@ -23,15 +23,15 @@
                 <div class="login-body">
                     <div class="login-title"><strong>Entre com</strong> seu email e senha</div>
                     @if (count($errors) > 0)
-        							@foreach ($errors->all() as $error)
-        								<strong></strong>
-                        <div class="alert alert-danger" role="alert">
+                        @foreach ($errors->all() as $error)
+                            <strong></strong>
+                            <div class="alert alert-danger" role="alert">
                             <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                             <strong>Ops!</strong> {{ $error }}
-                        </div>
-        							@endforeach
-        							<br><br>
-          					@endif
+                            </div>
+                        @endforeach
+                        <br><br>
+                    @endif
                     <form action="/auth/login" class="form-horizontal" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
@@ -51,21 +51,6 @@
                         <div class="col-md-6">
                             <button class="btn btn-info btn-block">Logar</button>
                         </div>
-                    </div>
-                    <div class="login-or">OU</div>
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            <button class="btn btn-info btn-block btn-twitter"><span class="fa fa-twitter"></span> Twitter</button>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-info btn-block btn-facebook"><span class="fa fa-facebook"></span> Facebook</button>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-info btn-block btn-google"><span class="fa fa-google-plus"></span> Google</button>
-                        </div>
-                    </div>
-                    <div class="login-subtitle">
-                        Você não tem conta? <a href="#">Criar uma conta</a>
                     </div>
                     </form>
                 </div>
