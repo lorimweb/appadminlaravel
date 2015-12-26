@@ -51,9 +51,6 @@ class PortfolioController extends Controller
             $filename  = $image->getClientOriginalExtension();
 
             if($filename != 'jpg' && $filename != 'png'){
-                //Session::flash('type', 'danger');
-                //Session::flash('icon', 'check');
-                //Session::flash('erro', 'Arquivo não permitido');
                 return back()->with('erro', 'Arquivo não permitido');
             }
         }
@@ -65,7 +62,7 @@ class PortfolioController extends Controller
         $port->save();
         if(Input::file('img'))
         {
-            File::move($imagem, public_patch().'/assets/uploads/id'.$port->id.'.'.$filename);
+            File::move($image, public_patch().'/assets/uploads/id'.$port->id.'.'.$filename);
             $port->img = public_patch().'/assets/uploads/id'.$port->id.'.'.$filename;
             $port->save();
         }

@@ -26,7 +26,7 @@
                                 {{session('erro')}}
                             </div>
                           @endif
-                        <form class="" action="/portfolio/inserir" method="post">
+                        <form class="" action="/portfolio/inserir" method="post" enctype="multipart/form-data">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                               <label>Titulo</label>
