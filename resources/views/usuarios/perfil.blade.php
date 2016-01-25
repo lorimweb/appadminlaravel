@@ -29,38 +29,14 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <button class="btn btn-info btn-rounded btn-block"><span class="fa fa-check"></span> Seguir</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button class="btn btn-primary btn-rounded btn-block"><span class="fa fa-comments"></span> Chat</button>
+                    <div class="col-md-12">
+                        {{Auth::user()->email}}
                     </div>
                 </div>
             </div>
             <div class="panel-body list-group border-bottom">
-                <a href="#" class="list-group-item"><span class="fa fa-cog"></span> Editar Perfil</a>
-                <a href="#" class="list-group-item"><span class="fa fa-image"></span> Alterar Foto </a>
-                <a href="#" class="list-group-item"><span class="fa fa-lock"></span> Alterar Senha</a>
-            </div>
-            <div class="panel-body">
-                <h4 class="text-title">Amigos</h4>
-                <div class="row">
-                    <div class="col-md-4 col-xs-4">
-                        <a href="#" class="friend">
-                            <img src="{{asset('assets/img/no-image.jpg')}}"/>
-                            <span>Deus</span>
-                        </a>
-                    </div>
-                </div>
-
-                <h4 class="text-title">Fotos</h4>
-                <div class="gallery" id="links">
-                    <a href="{{asset('assets/img/nature-7.jpg')}}" title="Music Image 1" class="gallery-item" data-gallery>
-                        <div class="image">
-                            <img src="{{asset('assets/img/nature-7.jpg')}}" alt="Music Image 1"/>
-                        </div>
-                    </a>
-                </div>
+                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal_foto"><span class="fa fa-image"></span> Alterar Foto </a>
+                <a href="#" class="list-group-item" data-toggle="modal" data-target="#modal_senha"><span class="fa fa-lock"></span> Alterar Senha</a>
             </div>
         </div>
 
@@ -72,42 +48,98 @@
               <h3 class="panel-title"><span class="fa fa-user"></span> Editar Perfil</h3>
           </div>
           <div class="panel-body">
-            <div class="form-group">
-              <textarea name="status" class="form-control" rows="8" cols="40" placeholder="Status"></textarea>
-            </div>
-            <form action="" method="post">
-              <div class="form-group">
-                <label>Nome</label>
-                <input type="text" name="name" value="{{Auth::user()->name}}" class="form-control text-info">
-              </div>
-              <div class="form-group">
-                <label>Endereco</label>
-                <input type="text" name="endereco" value="{{Auth::user()->endereco}}" class="form-control text-info">
-              </div>
-              <div class="form-group">
-                <label>Telefone</label>
-                <input type="text" name="telefone" value="{{Auth::user()->telefone}}" class="form-control text-info">
-              </div>
-              <div class="form-group">
-                <label>Email</label>
-                <input type="text" name="email" value="{{Auth::user()->email}}" class="form-control text-info">
-              </div>
-              <div class="form-group">
-                <input type="submit" name="name" class="btn btn-info pull-right" value="Atualizar Perfil">
-              </div>
-            </form>
-          </div>
-      </div>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-              <h3 class="panel-title"><span class="fa fa-image"></span> Alterar Foto</h3>
-          </div>
-          <div class="panel-body">
-            <form action="" method="post">
-              <input type="file" name="foto" class="form-control">
+            <form action="/usuarios/perfilupdate" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="put" value="{{ $usuarios[0]->id }}">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" name="name" value="{{$usuarios[0]->name}}" class="form-control text-success">
+                    <span class="text-danger">{{($errors->first('name') ? $errors->first('name') : '')}} </span>
+                </div>
+                <div class="form-group">
+                    <label>Sobre nome</label>
+                    <input type="text" name="sobre_nome" value="{{$usuarios[0]->sobre_nome}}" class="form-control text-success">
+                    <span class="text-danger">{{($errors->first('sobre_nome') ? $errors->first('sobre_nome') : '')}} </span>
+                </div>
+                <div class="form-group">
+                    <label>Endereco</label>
+                    <input type="text" name="endereco" value="{{$usuarios[0]->endereco}}" class="form-control text-success">
+                    <span class="text-danger">{{($errors->first('endereco') ? $errors->first('endereco') : '')}} </span>
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" name="telefone" value="{{$usuarios[0]->telefone}}" class="form-control text-success">
+                    <span class="text-danger">{{($errors->first('telefone') ? $errors->first('telefone') : '')}} </span>
+                </div>
+                <div class="form-group">
+                    <label>Sobre mim</label>
+                    <textarea name="sobre" class="form-control text-success" rows="8" cols="40" placeholder="Status">{{ $usuarios[0]->sobre }}</textarea>
+                    <span class="text-danger">{{($errors->first('sobre') ? $errors->first('sobre') : '')}} </span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info pull-right" name="button">Atualizar Perfil</button>
+                </div>
             </form>
           </div>
       </div>
     </div>
 </div>
+
+<div class="modal" id="modal_foto" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                <h4 class="modal-title" id="defModalHead">Alterar foto</h4>
+            </div>
+            <div class="modal-body">
+                <form class="dropzone dropzone-mini" action="{{url('usuarios/upload_foto')}}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type="hidden" name="id" value="{{$usuarios[0]->id}}">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="{{url('usuarios/perfil')}}" class="btn btn-default" data-dismiss="modal" onclick="atualiza()">Fechar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal_senha" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                <h4 class="modal-title" id="defModalHead">Alterar Senha</h4>
+            </div>
+            <div class="modal-body">
+                <form class="" action="{{url('usuarios/update_senha')}}" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="put" value="{{ $usuarios[0]->id }}">
+                    <div class="form-group">
+                        <label for="">Senha</label>
+                        <input type="password" name="password" value="" class="form-control">
+                        <span class="text-danger">{{($errors->first('password') ? $errors->first('password') : '')}} </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Repita a Senha</label>
+                        <input type="password" name="password_confirmation" value="" class="form-control">
+                        <span class="text-danger">{{($errors->first('password_confirmation') ? $errors->first('password_confirmation') : '')}} </span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info pull-right" name="button">Salvar</button><br><br>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function atualiza(){
+        window.location.reload();
+    }
+</script>
 @stop

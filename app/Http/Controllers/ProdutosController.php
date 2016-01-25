@@ -12,7 +12,7 @@ use Validator;
 
 class ProdutosController extends Controller{
 
-    public function index(){
+    public function getIndex(){
       $titulo = "Produtos - ";
       $produtos = Produtos::all();
       return view('produtos.index', compact('produtos', 'titulo'));

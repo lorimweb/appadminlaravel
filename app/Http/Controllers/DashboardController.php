@@ -9,8 +9,9 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller{
 
-    public function index(){
+    public function getIndex(){
       $titulo = "Dashboard - ";
-      return view('dashboard', compact('titulo'));
+      $config = \App\Config::all();
+      return view('dashboard', compact('titulo', 'config'));
     }
 }

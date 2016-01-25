@@ -56,7 +56,7 @@
                 </div>
                 <div class="login-footer">
                     <div class="pull-left">
-                        &copy; {{@date('Y')}} LW Admin
+                        &copy; {{@date('Y')}} Back-end Desenvolvido por: <a href="http://www.lorimweb.com.br">LorimWeb</a>
                     </div>
                     <div class="pull-right">
                         <a href="#">Sobre</a> |

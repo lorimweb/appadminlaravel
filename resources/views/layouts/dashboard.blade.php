@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+<?php $config = \DB::table('configs')->get(); ?>
 <html lang="pt-BR">
     <head>
         <!-- META SECTION -->
@@ -12,19 +14,20 @@
 
         <!-- CSS INCLUDE -->
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/base.css')}}"/>
-        <link rel="stylesheet" type="text/css" id="theme" href="{{asset('assets/css/theme-default.css')}}"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="{{asset('assets/css/theme-'.$config[0]->temas.'.css')}}"/>
+        <link rel="stylesheet" type="text/css" id="theme" href="{{asset('assets/css/toastr.css')}}"/>
         <!-- EOF CSS INCLUDE -->
     </head>
-    <body>
+    <body class="page-container-boxed">
         <!-- START PAGE CONTAINER -->
-        <div class="page-container">
+        <div class="page-container {{$config[0]->toggled}}">
 
             <!-- START PAGE SIDEBAR -->
             <div class="page-sidebar">
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="{{url('dashboard')}}">LW Admin</a>
+                        <a href="{{url('dashboard')}}">{{$config[0]->appnome}}</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
@@ -93,12 +96,8 @@
                             <li><a href="{{url('usuarios')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
                         </ul>
                     </li>
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-gears"></span> <span class="xn-text">Configurações</span></a>
-                        <ul>
-                            <li><a href=""><span class="fa fa-gear"></span> Basica</a></li>
-                            <li><a href=""><span class="fa fa-gears"></span> Avançada</a></li>
-                        </ul>
+                    <li>
+                        <a href="{{url('config')}}"><span class="fa fa-gears"></span> <span class="xn-text">Configurações</span></a>
                     </li>
                 </ul>
                 <!-- END X-NAVIGATION -->
@@ -201,6 +200,8 @@
         <script type="text/javascript" src="{{asset('assets/js/plugins/daterangepicker/daterangepicker.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/plugins/blueimp/jquery.blueimp-gallery.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/js/plugins/bootstrap/bootstrap-select.js')}}"></script>
+
         <!-- END PAGE PLUGINS -->
 
         <!-- START TEMPLATE -->
@@ -209,6 +210,28 @@
         @endif
         <script type="text/javascript" src="{{asset('assets/js/plugins.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/actions.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/js/toastr.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/js/plugins/dropzone/dropzone.min.js')}}"></script>
+
+        @if(Session::has('message'))
+          <script>
+            toastr.options.timeOut = 6000;
+            toastr.{{ Session::get('type') }}('{{ Session::get('message') }}');
+          </script>
+        @endif
+        <script type="text/javascript">
+            /* Default settings */
+            var theme_settings = {
+                st_head_fixed: 0,
+                st_sb_fixed: 0,
+                st_sb_scroll: 1,
+                st_sb_right: 0,
+                st_sb_custom: 0,
+                st_sb_toggled: 1,
+                st_layout_boxed:'{{$config[0]->layout}}'
+            };
+            /* End Default settings */
+        </script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
     </body>

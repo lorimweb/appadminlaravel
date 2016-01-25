@@ -17,9 +17,17 @@
   padding: 0;
 }
 .form-group input{
-    padding: 18px 10px;
+    padding: 15px 10px;
+    font-weight: bold;
+    height: 45px;
+}
+.form-group textarea{
+    font-weight: bold;
 }
 .form-group .btn{
-    padding: 7px 15px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+     border-radius:3px;
+    padding: 10px 15px;
     font-weight: bold;
 }

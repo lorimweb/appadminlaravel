@@ -12,9 +12,6 @@
 
     <div class="row">
         <div class="col-md-12">
-          @if(Session::has('message'))
-            <div class="alert alert-{{ Session::get('type') }} alert-dismissable"><b><i class="icon fa fa-{{ Session::get('icon') }}"></i> {{ Session::get('message') }}</b><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
-          @endif
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"><span class="fa fa-group"></span> Usuários cadastrados</h3>

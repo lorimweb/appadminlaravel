@@ -12,7 +12,8 @@ use Session;
 class FrontEndController extends Controller{
 
 	public function index(){
-		return view('front-end.index');
+		$user = \App\User::all();
+		return view('front-end.index', compact('user'));
 	}
 
 	public function enviar_msg(Request $request){
@@ -35,19 +36,19 @@ class FrontEndController extends Controller{
 		return redirect('/');
 	}
 
-    // funçao para validar os dados da mensagem
-    public function validator(array $data){
-      $messages = [
+	// funçao para validar os dados da mensagem
+	public function validator(array $data){
+	  $messages = [
 	      'nome.required' => 'Por favor digite seu nome',
 	      'assunto.required' => 'Por favor digite um assunto',
 	      'email.required' => 'Por favor digite seu email',
 	      'msg.required' => 'Por favor digite uma mensagem',
-      ];
-  		return Validator::make($data, [
+	  ];
+			return Validator::make($data, [
 		'nome' => 'required|max:255',
 		'assunto' => 'required|max:255',
 		'email' => 'required|email',
 		'msg' => 'required',
-  		], $messages);
-  	}
+			], $messages);
+		}
 }

@@ -13,10 +13,13 @@ class UserTableSeeder extends Seeder
     {
         //factory('App\User', 10)->create();
         $user = new \App\User();
-        $user->name = "LorimWeb";
+        $user->name = "Administrador";
+        $user->sobre_nome = "Desenvolvedor Web";
+        $user->telefone = "(00) 00000-0000";
         $user->nivel = "1";
-        $user->email = "lorimweb@gmail.com";
-        $user->password = Hash::make(513021);
+        $user->email = "admin@site.com";
+        $user->password = Hash::make('admin');
+        $user->sobre = "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos...";
         $user->save();
     }
 }
