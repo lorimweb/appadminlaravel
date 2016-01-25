@@ -6,25 +6,19 @@
 
 
 ##Modulos:
-Catetoria
-Usuários
-Galeria de Fotos
-Portfólio
-Skill
-Post
-Configurações
+Catetoria, Usuários, Galeria de Fotos, Portfólio, Skill, Post e Configurações
 
 ##Instalação:
-Migrações:
-php artisan migrate:install
-php artisan migrate
+#Migrações:
+#php artisan migrate:install
+#php artisan migrate
 
 ##Seeds:
-php artisan db:seed
+#php artisan db:seed
 
 ##Dados para acesso back-end:
-Login: admin@site.com
-Senha: admin
+#Login: admin@site.com
+#Senha: admin
 
 
 
