@@ -4,7 +4,6 @@
 ##Templates usados ambos free:
 1. [Front-end: Freelancer](http://startbootstrap.com/template-overviews/freelancer/)
 2. [Back-end: Joli Admin](http://themifycloud.com/downloads/freee-responsive-bootstrap-joli-angular-js-admin-template-dashboard-web-app/)
-=====
 
 ##Modulos:
 1. Catetoria
@@ -14,7 +13,6 @@
 5. Skill
 6. Post
 7. Configurações
-=====
 
 ##Instalação:
 =====
