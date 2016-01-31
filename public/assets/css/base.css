@@ -1,12 +1,12 @@
-.edit{
+.button{
   color: #333;
-  font-size: 15px;
+  font-size: 20px;
   margin: 0;
   padding: 0;
 }
 .delete{
   color: #333;
-  font-size: 15px;
+  font-size: 20px;
   margin: 0;
   padding: 0;
 }
@@ -19,7 +19,7 @@
 .form-group input{
     padding: 15px 10px;
     font-weight: bold;
-    height: 45px;
+    height: 43px;
 }
 .form-group textarea{
     font-weight: bold;

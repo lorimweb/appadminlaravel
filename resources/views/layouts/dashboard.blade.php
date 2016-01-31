@@ -14,6 +14,7 @@
 
         <!-- CSS INCLUDE -->
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/base.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/fancybox/css/jquery.fancybox.css')}}"/>
         <link rel="stylesheet" type="text/css" id="theme" href="{{asset('assets/css/theme-'.$config[0]->temas.'.css')}}"/>
         <link rel="stylesheet" type="text/css" id="theme" href="{{asset('assets/css/toastr.css')}}"/>
         <!-- EOF CSS INCLUDE -->
@@ -60,17 +61,10 @@
                         <a href="{{url('dashboard')}}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
                     </li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Clientes</span></a>
+                        <a href="#"><span class="fa fa-list-ul"></span> <span class="xn-text">Skill</span></a>
                         <ul>
-                            <li><a href="{{url('clientes/cadastro')}}"><span class="fa fa-plus-circle"></span> Novo</a></li>
-                            <li><a href="{{url('clientes')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
-                        </ul>
-                    </li>
-                    <li class="xn-openable">
-                        <a href="#"><span class="fa fa-list-ul"></span> <span class="xn-text">Categorias</span></a>
-                        <ul>
-                            <li><a href="{{url('categorias/cadastro')}}"><span class="fa fa-plus-circle"></span> Novo</a></li>
-                            <li><a href="{{url('categorias')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
+                            <li><a href="{{url('skill/cadastro')}}"><span class="fa fa-plus-circle"></span> Novo</a></li>
+                            <li><a href="{{url('skill')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -80,13 +74,26 @@
                             <li><a href="{{url('produtos')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><span class="fa fa-money"></span> <span class="xn-text">Vendas</span></a></li>
-                    <li><a href="#"><span class="fa fa-folder-open"></span> <span class="xn-text">Lançamentos</span></a></li>
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Post</span></a>
+                        <ul>
+                            <li><a href="{{url('post/cadastro')}}"><span class="fa fa-plus-circle"></span> Novo</a></li>
+                            <li><a href="{{url('post')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
+                            <li><a href="{{url('post/categoria')}}"><span class="fa fa-list-ul"></span> Categorias</a></li>
+                        </ul>
+                    </li>                    </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-picture-o"></span> <span class="xn-text">Portfólio</span></a>
                         <ul>
                             <li><a href="{{url('portfolio/cadastro')}}"><span class="fa fa-plus-circle"></span> Novo</a></li>
                             <li><a href="{{url('portfolio')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
+                        </ul>
+                    </li>
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-picture-o"></span> <span class="xn-text">Galeria de Fotos</span></a>
+                        <ul>
+                            <li><a href="{{url('galeria/cadastro')}}"><span class="fa fa-plus-circle"></span> Nova</a></li>
+                            <li><a href="{{url('galeria')}}"><span class="fa fa-list-ul"></span> Lista</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -208,10 +215,21 @@
         @if(Auth::user()->nivel == 1)
         <script type="text/javascript" src="{{asset('assets/js/settings.js')}}"></script>
         @endif
+
         <script type="text/javascript" src="{{asset('assets/js/plugins.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/actions.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/toastr.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/js/plugins/dropzone/dropzone.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/js/plugins/blueimp/jquery.blueimp-gallery.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/fancybox/js/jquery.fancybox.pack.js')}}"></script>
+
+        <!-- Plugin Fancybox -->
+        <script type="text/javascript" src="{{asset('assets/fancybox/js/jquery.mousewheel-3.0.6.pack.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/fancybox/js/jquery.mousewheel-3.0.6.pack.js')}}"></script>
+        
+        <script type="text/javascript" src="{{asset('assets/js/plugins/summernote/summernote.js')}}"></script>
+
+        <script type="text/javascript" src="{{asset('assets/js/app.js')}}"></script>
 
         @if(Session::has('message'))
           <script>
@@ -230,7 +248,6 @@
                 st_sb_toggled: 1,
                 st_layout_boxed:'{{$config[0]->layout}}'
             };
-            /* End Default settings */
         </script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->

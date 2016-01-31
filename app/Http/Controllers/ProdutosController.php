@@ -18,7 +18,7 @@ class ProdutosController extends Controller{
       return view('produtos.index', compact('produtos', 'titulo'));
     }
 
-    public function cadastro(){
+    public function getCadastro(){
       $titulo =  "Cadastrando Produtos - ";
       $produtos = Produtos::all();
       return view('produtos.cadastro', compact('titulo', 'produtos'));

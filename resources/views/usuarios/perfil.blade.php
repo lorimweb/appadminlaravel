@@ -93,7 +93,7 @@
                 <h4 class="modal-title" id="defModalHead">Alterar foto</h4>
             </div>
             <div class="modal-body">
-                <form class="dropzone dropzone-mini" action="{{url('usuarios/upload_foto')}}" method="post" enctype="multipart/form-data">
+                <form class="dropzone dropzone-mini" action="{{url('usuarios/uploadfoto')}}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <input type="hidden" name="id" value="{{$usuarios[0]->id}}">
                 </form>
@@ -113,7 +113,7 @@
                 <h4 class="modal-title" id="defModalHead">Alterar Senha</h4>
             </div>
             <div class="modal-body">
-                <form class="" action="{{url('usuarios/update_senha')}}" method="post">
+                <form class="" action="{{url('usuarios/updatesenha')}}" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="put" value="{{ $usuarios[0]->id }}">
                     <div class="form-group">

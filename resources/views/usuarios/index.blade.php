@@ -15,15 +15,14 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"><span class="fa fa-group"></span> Usuários cadastrados</h3>
-                    <a href="{{'usuarios/cadastro'}}" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i>Novo</a>
+                    <a href="{{'usuarios/cadastro'}}" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i>Novo usuário</a>
                 </div>
                 <div class="panel-body">
-                  <table class="table table-bordered table-striped table-hover datatable">
+                  <table class="table table-striped table-hover datatable">
                     <thead>
                       <tr>
                         <th>Nome</th>
                         <th>Email</th>
-                        <th>Telefone</th>
                         <th>Nivel</th>
                         <th>Ações</th>
                       </tr>
@@ -34,11 +33,11 @@
                           <tr>
                             <td>{{$u->name}}</td>
                             <td>{{$u->email}}</td>
-                            <td>{{$u->telefone}}</td>
                             <td>{{$u->nivel == 1 ? 'Administrador': 'Usuário'}}</th>
                             <td>
-                              <a href="usuarios/editar/{{$u->id}}" class="edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                              <a href="usuarios/excluir/{{$u->id}}" class="delete"><span class="glyphicon glyphicon-trash"></span></a>
+                              <a href="usuarios/editar/{{$u->id}}" class="button"><span class="fa fa-pencil"></span></a>
+                              &nbsp;
+                              <a href="usuarios/excluir/{{$u->id}}" class="button"><span class="fa fa-trash-o"></span></a>
                             </td>
                           </tr>
                         @endif

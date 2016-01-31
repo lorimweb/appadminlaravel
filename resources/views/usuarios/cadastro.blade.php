@@ -13,7 +13,6 @@
 
     <div class="row">
         <div class="col-md-12">
-
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3 class="panel-title"><span class="fa fa-group"></span> Cadastro de Usuário</h3>
@@ -63,7 +62,7 @@
                               </div>
                             @endif
                             <div class="form-group">
-                              <input type="submit" class="btn btn-info" value="Cadastrar">
+                              <button type="submit" class="btn btn-info">Cadastrar</button>
                               <a href="{{url('usuarios')}}" class="btn btn-danger">Cancelar</a>
                             </div>
                         </form>

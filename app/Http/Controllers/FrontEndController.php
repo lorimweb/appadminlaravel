@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Portfolio;
 use Validator;
+use App\Skill;
+use App\User;
 use Session;
 
 class FrontEndController extends Controller{
 
 	public function index(){
-		$user = \App\User::all();
-		return view('front-end.index', compact('user'));
+		$user = User::all();
+		$skill = Skill::all();
+		$portfolio = Portfolio::all();
+		return view('front-end.index', compact('user', 'skill', 'portfolio'));
 	}
 
 	public function enviar_msg(Request $request){

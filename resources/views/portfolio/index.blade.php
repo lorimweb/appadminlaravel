@@ -15,30 +15,30 @@
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"><span class="fa fa-picture-o"></span> {{$titulo}}</h3>
-                    <a href="{{'portfolio/cadastro'}}" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i>Novo</a>
+                    <a href="{{'portfolio/cadastro'}}" class="btn btn-success pull-right"><i class="fa fa-plus-circle"></i>Novo portfólio</a>
                 </div>
                 <div class="panel-body">
                   <table class="table table-bordered table-striped table-hover datatable">
                     <thead>
                       <tr>
-                        <th>Descricao</th>
-                        <th>Preço</th>
-                        <th>Qtdade</th>
-                        <th>Data do Cadastro</th>
+                        <th>Titulo</th>
+                        <th>Job</th>
+                        <th>Url</th>
+                        <th>Imagem</th>
                         <th>Ações</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($portfolio as $p)
-                        <tr class="{{$p->qtdade <= 2 ? 'text-danger' : ''}}">
-                          <td>{{$p->descricao}}</td>
-                          <td>R$ {{$p->preco}}</td>
-                          <td>{{$p->qtdade}}</td>
-                          <td>{{@date('d/m/Y', strtotime($p->created_at))}}</th>
+                        <tr>
+                          <td>{{$p->titulo}}</td>
+                          <td>{{$p->job}}</td>
+                          <td>{{$p->url}}</td>
+                          <td><a href="{{url($p->img_path)}}" rel="gallery1" class="galeria"><img width="50" src="{{url($p->img_path)}}" alt=""></a></td>
                           <td>
-                            <a href="produtos/add_image/{{$p->id}}" class="default"><span class="glyphicon glyphicon-picture"></span></a>
-                            <a href="produtos/editar/{{$p->id}}" class="edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                            <a href="produtos/excluir/{{$p->id}}" class="delete"><span class="glyphicon glyphicon-trash"></span></a>
+                              <a href="portfolio/editar/{{$p->id}}" class="button"><span class="fa fa-pencil"></span></a>
+                              &nbsp;
+                              <a href="portfolio/excluir/{{$p->id}}" class="button" onclick="confirm('Deseja realemente deletar esse Portfólio?')"><span class="fa fa-trash-o"></span></a>
                           </td>
                         </tr>
                       @endforeach

@@ -21,11 +21,6 @@
                 <div class="panel-body">
                     <div class="row">
                       <div class="col-md-12">
-                          @if(session('erro'))
-                            <div class="alert alert-danger">
-                                {{session('erro')}}
-                            </div>
-                          @endif
                         <form class="" action="/portfolio/inserir" method="post" enctype="multipart/form-data">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
@@ -45,7 +40,7 @@
                             </div>
                             <div class="form-group">
                               <label>Imagem</label>
-                              <input type="file" name="img"/>
+                              <input type="file" name="file"/>
                             </div>
                             <div class="form-group">
                               <input type="submit" class="btn btn-info" value="Cadastrar">

@@ -17,7 +17,8 @@ class TablePortfolio extends Migration
             $table->string('titulo');
             $table->string('job');
             $table->string('url');
-            $table->string('img');
+            $table->string('img_name');
+            $table->string('img_path');
             $table->timestamps();
         });
     }

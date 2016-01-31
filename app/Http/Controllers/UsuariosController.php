@@ -75,7 +75,7 @@ class UsuariosController extends Controller{
       return view('usuarios.perfil', compact('usuarios', 'titulo'));
     }
 
-    public function postUpload_foto(Request $request){
+    public function postUploadfoto(Request $request){
         $file = $request->file('file');
         $filename = uniqid() . $file->getClientOriginalName();
         $file->move('assets/uploads', $filename);
@@ -157,7 +157,7 @@ class UsuariosController extends Controller{
         }
   	}
 
-    //função cara a view editar selecionando o usuário pelo o ID para atualizar
+    //função para a view editar selecionando o usuário pelo o ID para atualizar
     public function getEditar($id){
         $titulo = "Editando Usuários - ";
         $user = User::all();

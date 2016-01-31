@@ -8,5 +8,5 @@ class Portfolio extends Model
 {
     protected $table = 'portfolio';
 
-    protected $fillable = ['titulo', 'job', 'url', 'img'];
+    protected $fillable = ['titulo', 'job', 'url', 'img_name', 'img_path'];
 }

@@ -9,70 +9,41 @@ use App\Http\Controllers\Controller;
 use Validator;
 use App\Portfolio;
 use Session;
-use Input;
+use Storage;
 use File;
 
-class PortfolioController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+class PortfolioController extends Controller{
+
+    public function getIndex(){
         $titulo = "Portfólio Cadastrados";
         $portfolio  = Portfolio::all();
         return view('portfolio.index', compact('titulo', 'portfolio'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function cadastro()
-    {
+    public function getCadastro(){
         $titulo = "Cadastro de Portfólio";
         return view('portfolio.cadastro', compact('titulo'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function inserir(Request $request)
-    {
-        if(Input::file('img'))
-        {
-            $image = Input::file('img');
-            $filename  = $image->getClientOriginalExtension();
-
-            if($filename != 'jpg' && $filename != 'png'){
-                return back()->with('erro', 'Arquivo não permitido');
-            }
-        }
-        $port = new Portfolio;
-        $port->titulo = Input::get('titulo');
-        $port->job = Input::get('job');
-        $port->url = Input::get('url');
-        $port->img = "";
-        $port->save();
-        if(Input::file('img'))
-        {
-            File::move($image, public_patch().'/assets/uploads/id'.$port->id.'.'.$filename);
-            $port->img = public_patch().'/assets/uploads/id'.$port->id.'.'.$filename;
-            $port->save();
-        }
+    public function postInserir(Request $request){
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) { $this->throwValidationException($request, $validator); }
+        $file = $request->file('file');
+        $filename = uniqid() . $file->getClientOriginalName();
+        $file->move('assets/uploads/portfolio', $filename);
+        Portfolio::create([
+            'titulo'    =>  $request->titulo,
+            'job'       =>  $request->job,
+            'url'       =>  $request->url,
+            'img_name'  =>  $filename,
+            'img_path'  =>  'assets/uploads/portfolio/' .$filename
+        ]);
         Session::flash('type', 'success');
         Session::flash('icon', 'check');
         Session::flash('message', 'Portfolio cadastrado com sucesso!');
         return redirect('portfolio');
     }
 
-    // funçao para validar os dados do cadastro de usuários
     public function validator(array $data){
       $messages = [
         'titulo.required' => 'Por favor digite um Titulo',
@@ -86,38 +57,24 @@ class PortfolioController extends Controller
   		], $messages);
   	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function getEditar($id){
+        $titulo = "Editando Portfólio";
+        $portfolio = Portfolio::find($id);  
+        return view('portfolio.editar', compact('titulo', 'portfolio')); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function postUpdate(Request $request){
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) { $this->throwValidationException($request, $validator); }
+        Portfolio::where('id', $request['put'])->update([
+            'titulo'    =>  $request->titulo,
+            'job'       =>  $request->job,
+            'url'       =>  $request->url
+        ]);
+        Session::flash('type', 'success');
+        Session::flash('icon', 'ban');
+        Session::flash('message', 'Portfolio atualizado com sucesso');
+        return redirect('portfolio');        
     }
 
     /**
@@ -126,8 +83,15 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function getExcluir($id){
+        $image = Portfolio::where('id', $id)->get();
+        foreach($image as $img):
+            Storage::delete($img->img_path);
+        endforeach;
+        Portfolio::destroy($id);
+        Session::flash('type', 'success');
+        Session::flash('icon', 'ban');
+        Session::flash('message', 'Portfolio deletado com sucesso');
+        return redirect('portfolio');
     }
 }

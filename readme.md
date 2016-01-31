@@ -6,13 +6,12 @@
 2. [Back-end: Joli Admin](http://themifycloud.com/downloads/freee-responsive-bootstrap-joli-angular-js-admin-template-dashboard-web-app/)
 
 ##Modulos:
-1. Catetoria
-2. Usuários
-3. Galeria de Fotos
-4. Portfólio
-5. Skill
-6. Post
-7. Configurações
+1. Usuários
+2. Galeria de Fotos
+3. Portfólio
+4. Skill
+5. Post
+6. Configurações
 
 ##Instalação:
 =====
@@ -31,7 +30,7 @@
 
 
 
-##LorimWeb
+##LorimWeb - Desenvolvedor Web
 [Website](http://www.lorimweb.com.br)
 [Facebook](http://www.facebook.com/LorimWeb)
 [Twitter](http://www.twitter.com/LorimWeb)

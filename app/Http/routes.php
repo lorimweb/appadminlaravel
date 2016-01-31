@@ -34,60 +34,32 @@ Route::group(['prefix' => '/config', 'middleware' => 'auth'], function(){
 	Route::controller('/', 'ConfigController');
 });
 
-// Rotas com prefixo config
+// Rotas com prefixo dashboard
 Route::group(['prefix' => '/dashboard', 'middleware' => 'auth'], function(){
 	Route::controller('/', 'DashboardController');
 });
 
-// Back-end...
-// Route::group(['middleware' => 'auth'], function () {
-//   Route::get('dashboard', 'DashboardController@index');
-//
-//   //Usuários
-//   Route::get('usuarios', 'UsuariosController@index');
-//   Route::get('usuarios/cadastro', 'UsuariosController@cadastro');
-//   Route::post('usuarios/inserir', 'UsuariosController@inserir');
-//   Route::post('usuarios/atualizar', 'UsuariosController@atualizar');
-//   Route::get('usuarios/excluir/{id}', 'UsuariosController@excluir');
-//   Route::get('usuarios/editar/{id}', 'UsuariosController@editar');
-//   Route::get('usuarios/perfil', 'UsuariosController@perfil');
-//   Route::post('usuarios/perfil_update', 'UsuariosController@perfil_update');
-//   Route::post('usuarios/upload_foto', 'UsuariosController@upload_foto');
-//   Route::post('usuarios/update_senha', 'UsuariosController@update_senha');
-//
-//   //Produtos
-//   Route::get('produtos', 'ProdutosController@index');
-//   Route::get('produtos/cadastro', 'ProdutosController@cadastro');
-//   Route::post('produtos/inserir', 'ProdutosController@inserir');
-//   Route::get('produtos/editar/{id}', 'ProdutosController@editar');
-//   Route::get('produtos/excluir/{id}', 'ProdutosController@excluir');
-//   Route::post('produtos/atualizar', 'ProdutosController@atualizar');
-//
-//   //Clientes
-//   Route::get('clientes', 'ClientesController@index');
-//   Route::get('clientes/cadastro', 'ClientesController@cadastro');
-//   Route::post('clientes/inserir', 'ClientesController@inserir');
-//   Route::get('clientes/editar/{id}', 'ClientesController@editar');
-//   Route::get('clientes/excluir/{id}', 'ClientesController@excluir');
-//   Route::post('clientes/atualizar', 'ClientesController@atualizar');
-//
-//   //Categorias
-//   Route::get('categorias', 'CategoriasController@index');
-//   Route::get('categorias/cadastro', 'CategoriasController@cadastro');
-//   Route::post('categorias/inserir', 'CategoriasController@inserir');
-//   Route::get('clientes/editar/{id}', 'ClientesController@editar');
-//   Route::get('clientes/excluir/{id}', 'ClientesController@excluir');
-//   Route::post('clientes/atualizar', 'ClientesController@atualizar');
-//
-//   //Portfolio
-//   Route::get('portfolio', 'PortfolioController@index');
-//   Route::get('portfolio/cadastro', 'PortfolioController@cadastro');
-//   Route::post('portfolio/inserir', 'PortfolioController@inserir');
-//   Route::get('portfolio/editar/{id}', 'PortfolioController@editar');
-//   Route::get('portfolio/excluir/{id}', 'PortfolioController@excluir');
-//   Route::post('portfolio/atualizar', 'PortfolioController@atualizar');
-//
-//   //Configurações
-//   Route::get('config', 'ConfigController@index');
-//   Route::post('config/atualizar', 'ConfigController@atualizar');
-// });
+// Rotas com prefixo galeria
+Route::group(['prefix' => '/galeria', 'middleware' => 'auth'], function(){
+	Route::controller('/', 'GaleriaController');
+});
+
+// Rotas com prefixo produtos
+Route::group(['prefix' => '/produtos', 'middleware' => 'auth'], function(){
+	Route::controller('/', 'ProdutosController');
+});
+
+// Rotas com prefixo skill
+Route::group(['prefix' => '/skill', 'middleware' => 'auth'], function(){
+	Route::controller('/', 'SkillController');
+});
+
+// Rotas com prefixo portfolio
+Route::group(['prefix' => '/portfolio', 'middleware' => 'auth'], function(){
+	Route::controller('/', 'PortfolioController');
+});
+// Rotas com prefixo portfolio
+Route::group(['prefix' => '/post', 'middleware' => 'auth'], function(){
+	Route::controller('/', 'PostController');
+});
+
