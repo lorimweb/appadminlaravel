@@ -56,6 +56,13 @@ class PostController extends Controller{
         return redirect('post/cadastro');
     }
 
+	public function getEditar($id){
+    	$titulo = "Editar Post";
+    	$post = Post::find($id);
+    	$cat 	= PostCategoria::all();
+    	return view('post.editar', compact('titulo', 'post', 'cat'));
+	}
+
  	public function getAtivo($id, $ativo){
 		Post::where('post_id', $id)->update(['ativo' => $ativo]);
 		return 'true';

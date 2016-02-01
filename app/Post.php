@@ -13,5 +13,9 @@ class Post extends Model{
 
     public function imagens(){
     	return $this->hasMany('App\PostImagem');
-    }    
+    }
+
+    public function categorias(){
+        return $this->hasMany('App\PostCategoria');
+    }
 }
