@@ -78,7 +78,10 @@ class UsuariosController extends Controller{
     public function postUploadfoto(Request $request){
         $file = $request->file('file');
         $filename = uniqid() . $file->getClientOriginalName();
-        $file->move('assets/uploads', $filename);
+        $file->move('assets/uploads/perfil', $filename);
+        if(file_exists($filename)){
+            Storage::delete('assets/uploads/perfil/', $filename);
+        }
         User::where('id', $request['id'])->update([
             'foto' => $filename
         ]);

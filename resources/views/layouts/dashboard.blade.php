@@ -44,7 +44,7 @@
                               @if(Auth::user()->foto == null)
                                 <img src="{{asset('assets/img/no-image.jpg')}}" alt="{{Auth::user()->name}}"/>
                               @else
-                                <img src="{{asset('assets/uploads/'.Auth::user()->foto)}}" alt="{{Auth::user()->name}}"/>
+                                <img src="{{asset('assets/uploads/perfil/'.Auth::user()->foto)}}" alt="{{Auth::user()->name}}"/>
                               @endif
                             </div>
                             <div class="profile-data">
@@ -226,7 +226,7 @@
         <!-- Plugin Fancybox -->
         <script type="text/javascript" src="{{asset('assets/fancybox/js/jquery.mousewheel-3.0.6.pack.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/fancybox/js/jquery.mousewheel-3.0.6.pack.js')}}"></script>
-        
+
         <script type="text/javascript" src="{{asset('assets/js/plugins/summernote/summernote.js')}}"></script>
 
         <script type="text/javascript" src="{{asset('assets/js/app.js')}}"></script>

@@ -12,6 +12,7 @@
 */
 // usage inside a laravel route
 Route::get('/', 'FrontEndController@index');
+Route::get('/blog', 'FrontEndController@blog');
 Route::post('contato/enviar_msg', 'FrontEndController@enviar_msg');
 
 // Authentication routes...
@@ -62,4 +63,3 @@ Route::group(['prefix' => '/portfolio', 'middleware' => 'auth'], function(){
 Route::group(['prefix' => '/post', 'middleware' => 'auth'], function(){
 	Route::controller('/', 'PostController');
 });
-

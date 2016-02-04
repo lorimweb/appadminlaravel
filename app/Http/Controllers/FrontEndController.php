@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\PostCategoria;
 use App\Portfolio;
 use Validator;
 use App\Skill;
 use App\User;
 use Session;
+use App\Post;
 
 class FrontEndController extends Controller{
 
@@ -19,6 +21,13 @@ class FrontEndController extends Controller{
 		$skill = Skill::all();
 		$portfolio = Portfolio::all();
 		return view('front-end.index', compact('user', 'skill', 'portfolio'));
+	}
+
+	public function blog(){
+		$user 	= User::all();
+		$post	= Post::all();
+		$cat	= PostCategoria::all();
+		return view('front-end.blog', compact('user', 'cat', 'post'));
 	}
 
 	public function enviar_msg(Request $request){

@@ -15,7 +15,7 @@
                     @if(Auth::user()->foto == null)
                       <img src="{{asset('assets/img/no-image.jpg')}}" alt="{{Auth::user()->name}}"/>
                     @else
-                      <img src="{{asset('assets/uploads/'.Auth::user()->foto)}}" alt="{{Auth::user()->name}}"/>
+                      <img src="{{asset('assets/uploads/perfil/'.Auth::user()->foto)}}" alt="{{Auth::user()->name}}"/>
                     @endif
                 </div>
                 <div class="profile-data">

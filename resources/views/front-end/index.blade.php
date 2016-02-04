@@ -60,7 +60,7 @@
                         <a href="#about">Quem sou</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#blog">Blog</a>
+                        <a href="{{url('blog')}}">Blog</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">Contato</a>
@@ -80,7 +80,7 @@
                     @if($user[0]->foto == null)
                       <img class="img-responsive img-round" src="{{asset('assets/img/no-image.jpg')}}" alt="{{$user[0]->name}}"/>
                     @else
-                      <img class="img-responsive img-round" src="{{asset('assets/uploads/'.$user[0]->foto)}}" alt="{{$user[0]->name}}"/>
+                      <img class="img-responsive img-round" src="{{asset('assets/uploads/perfil/'.$user[0]->foto)}}" alt="{{$user[0]->name}}"/>
                     @endif
                     <div class="intro-text">
                         <span class="name">{{$user[0]->name}}</span>
@@ -274,7 +274,7 @@
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-    
+
     @foreach($portfolio as $p)
     <!-- Portfolio Modals -->
     <div class="portfolio-modal modal fade" id="{{str_slug($p->titulo)}}" tabindex="-1" role="dialog" aria-hidden="true">

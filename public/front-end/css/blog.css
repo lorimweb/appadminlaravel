@@ -1,0 +1,13 @@
+.top-blog{
+    background: url('/front-end/img/bg_blog.jpg') no-repeat;
+}
+.content a{
+    text-decoration: none;
+    color: #333;
+}
+.content p{
+    font-size: 16px;
+}
+.breadcrumb{
+    background: transparent;
+}
