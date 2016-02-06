@@ -46,6 +46,19 @@ class PostController extends Controller{
         return redirect('post');
     }
 
+    public function postUpdate(Request $request){
+    	Post::where('post_id', $request['put'])->update([
+    		'titulo' 		=> $request->titulo,
+    		'slug' 			=> ($request['slug'] != '') ? $request['slug'] = str_slug($request['slug']) : $request['slug'] = str_slug($request['titulo']),
+    		'data' 			=> date("Y-m-d", strtotime(str_replace('/', '-', $request->data))),
+    		'conteudo'		=> $request->conteudo
+    	]);
+        Session::flash('type', 'success');
+        Session::flash('icon', 'ban');
+        Session::flash('message', 'Post atualizado com sucesso');
+        return redirect('post');
+    }
+
     public function postInserircat(Request $request){
     	PostCategoria::create([
     		'titulo' 	=> $request->titulo
@@ -58,7 +71,7 @@ class PostController extends Controller{
 
 	public function getEditar($id){
     	$titulo = "Editar Post";
-    	$post = Post::find($id);
+    	$post 	= Post::find($id);
     	$cat 	= PostCategoria::all();
     	return view('post.editar', compact('titulo', 'post', 'cat'));
 	}
@@ -66,7 +79,7 @@ class PostController extends Controller{
  	public function getAtivo($id, $ativo){
 		Post::where('post_id', $id)->update(['ativo' => $ativo]);
 		return 'true';
-	}   
+	}
 
 	public function getImagem($id){
     	$titulo		= "Adicionar Foto";

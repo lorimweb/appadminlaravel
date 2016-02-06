@@ -34,7 +34,14 @@
                           <tr>
                             <td>{{$p->titulo}}</td>
                             <td>{{date('d/m/Y', strtotime($p->data))}}</td>
-                            <td>{{$p->post_cat_id}}</td>
+                            <?php
+                                $cat = \DB::table('post_categorias')->where('post_cat_id', $p->post_cat_id)->get();
+                                foreach($cat as $c):
+                            ?>
+                            @foreach($cat as $c)
+                                <td>{{$c->titulo}}</td>
+                            @endforeach
+                            <?php endforeach; ?>
                             <td>{{$p->user_name}}</td>
                             <td>
                               <div class="form-group">

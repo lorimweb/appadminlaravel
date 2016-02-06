@@ -12,9 +12,12 @@
 */
 // usage inside a laravel route
 Route::get('/', 'FrontEndController@index');
-Route::get('/blog', 'FrontEndController@blog');
 Route::post('contato/enviar_msg', 'FrontEndController@enviar_msg');
 
+// Rotas com prefixo blog
+Route::group(['prefix' => '/blog', 'middleware' => 'auth'], function(){
+	Route::controller('/', 'BlogController');
+});
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

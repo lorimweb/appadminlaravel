@@ -319,11 +319,11 @@
     <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="{{asset("front-end/js/classie.js")}}"></script>
-    <script src="js/cbpAnimatedHeader.js")}}"></script>
+    <script src="{{asset("front-end/js/cbpAnimatedHeader.js")}}"></script>
 
     <!-- Contact Form JavaScript -->
     <script src="{{asset("front-end/js/jqBootstrapValidation.js")}}"></script>
-    <script src="js/contact_me.js")}}"></script>
+    <script src="{{asset("front-end/js/contact_me.js")}}"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="{{asset("front-end/js/freelancer.js")}}"></script>

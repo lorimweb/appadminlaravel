@@ -3,7 +3,7 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li><a href="{{url('dashboard')}}">Dashboard</a></li>
-    <li><a href="{{url('usuarios')}}">Usuários</a></li>
+    <li><a href="{{url('post')}}">Post</a></li>
     <li class="active">Editar</li>
 </ul>
 <!-- END BREADCRUMB -->
@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><span class="fa fa-group"></span> Editar Usuário</h3>
+                    <h3 class="panel-title"><span class="fa fa-group"></span> {{$titulo}}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -39,7 +39,6 @@
                                 <select class="form-control select" data-live-search="true" name="post_cat_id">
                                     <option value="" selected="selected">Selecione uma Categoria</option>
                                     @foreach($cat as $c)
-                                      <option value="{{ $c->post_cat_id }}" selected="selected">{{ $c->titulo }}</option>
                                       <option value="{{ $c->post_cat_id }}">{{ $c->titulo }}</option>
                                     @endforeach
                                 </select>
@@ -64,7 +63,7 @@
 </div>
 <div class="modal" id="categoria" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">                    
+        <div class="modal-content">
             <div class="modal-body">
                 <h3><i class="fa fa-bars"></i> Cadastro de Categoria</h3>
                 <form class="" action="/post/inserircat" method="post">
@@ -82,6 +81,6 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 <!-- END PAGE CONTENT WRAPPER -->
 @stop

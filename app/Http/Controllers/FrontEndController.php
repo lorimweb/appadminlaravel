@@ -23,13 +23,6 @@ class FrontEndController extends Controller{
 		return view('front-end.index', compact('user', 'skill', 'portfolio'));
 	}
 
-	public function blog(){
-		$user 	= User::all();
-		$post	= Post::all();
-		$cat	= PostCategoria::all();
-		return view('front-end.blog', compact('user', 'cat', 'post'));
-	}
-
 	public function enviar_msg(Request $request){
 		$contato = $request->all();
 		$validator = $this->validator($request->all());
