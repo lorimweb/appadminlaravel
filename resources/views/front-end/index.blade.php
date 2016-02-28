@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>{{$user[0]->name}} - {{$user[0]->sobre_nome}}</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link rel="icon" href="{{asset('front-end/img/icon.ico')}}" type="image/x-icon" />
     <link href="{{asset("front-end/css/bootstrap.css")}}" rel="stylesheet">
 
     <!-- Custom CSS -->

@@ -15,7 +15,7 @@ Route::get('/', 'FrontEndController@index');
 Route::post('contato/enviar_msg', 'FrontEndController@enviar_msg');
 
 // Rotas com prefixo blog
-Route::group(['prefix' => '/blog', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => '/blog'], function(){
 	Route::controller('/', 'BlogController');
 });
 // Authentication routes...
@@ -62,7 +62,7 @@ Route::group(['prefix' => '/skill', 'middleware' => 'auth'], function(){
 Route::group(['prefix' => '/portfolio', 'middleware' => 'auth'], function(){
 	Route::controller('/', 'PortfolioController');
 });
-// Rotas com prefixo portfolio
+// Rotas com prefixo post
 Route::group(['prefix' => '/post', 'middleware' => 'auth'], function(){
 	Route::controller('/', 'PostController');
 });
