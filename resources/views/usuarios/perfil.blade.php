@@ -50,30 +50,30 @@
           <div class="panel-body">
             <form action="/usuarios/perfilupdate" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="put" value="{{ $usuarios[0]->id }}">
+                <input type="hidden" name="put" value="{{ Auth::user()->id }}">
                 <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" name="name" value="{{$usuarios[0]->name}}" class="form-control text-success">
+                    <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control text-success">
                     <span class="text-danger">{{($errors->first('name') ? $errors->first('name') : '')}} </span>
                 </div>
                 <div class="form-group">
                     <label>Sobre nome</label>
-                    <input type="text" name="sobre_nome" value="{{$usuarios[0]->sobre_nome}}" class="form-control text-success">
+                    <input type="text" name="sobre_nome" value="{{ Auth::user()->sobre_nome}}" class="form-control text-success">
                     <span class="text-danger">{{($errors->first('sobre_nome') ? $errors->first('sobre_nome') : '')}} </span>
                 </div>
                 <div class="form-group">
                     <label>Endereco</label>
-                    <input type="text" name="endereco" value="{{$usuarios[0]->endereco}}" class="form-control text-success">
+                    <input type="text" name="endereco" value="{{ Auth::user()->endereco}}" class="form-control text-success">
                     <span class="text-danger">{{($errors->first('endereco') ? $errors->first('endereco') : '')}} </span>
                 </div>
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="text" name="telefone" value="{{$usuarios[0]->telefone}}" class="form-control text-success">
+                    <input type="text" name="telefone" value="{{ Auth::user()->telefone}}" class="form-control text-success">
                     <span class="text-danger">{{($errors->first('telefone') ? $errors->first('telefone') : '')}} </span>
                 </div>
                 <div class="form-group">
                     <label>Sobre mim</label>
-                    <textarea name="sobre" class="form-control text-success" rows="8" cols="40" placeholder="Status">{{ $usuarios[0]->sobre }}</textarea>
+                    <textarea name="sobre" class="form-control text-success" rows="8" cols="40" placeholder="Status">{{ Auth::user()->sobre }}</textarea>
                     <span class="text-danger">{{($errors->first('sobre') ? $errors->first('sobre') : '')}} </span>
                 </div>
                 <div class="form-group">

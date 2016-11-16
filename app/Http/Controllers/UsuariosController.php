@@ -87,7 +87,7 @@ class UsuariosController extends Controller{
         ]);
     }
 
-    public function postUpdate_senha(Request $request){
+    public function postUpdatesenha(Request $request){
         $user = $request->all();
         $validator = $this->validator_senha($request->all());
         if ($validator->fails()){ $this->throwValidationException( $request, $validator);}
@@ -132,6 +132,7 @@ class UsuariosController extends Controller{
           'endereco.required' => 'Por favor digite seu endereço',
           'telefone.required' => 'Por favor digite seu telefone',
           'sobre_nome.required' => 'Por favor digite seu sobre nome',
+          'email.required' => 'Por favor digite um email',
           'sobre.required' => 'Por favor digite um texto sobre você',
       ];
         return Validator::make($data, [
@@ -146,7 +147,7 @@ class UsuariosController extends Controller{
     //função para excluir usuários
     public function getExcluir($id){
         $user = User::find($id);
-        if($user->nivel == 1){
+        if($user->id == 1){
             Session::flash('type', 'error');
             Session::flash('icon', 'ban');
             Session::flash('message', 'Não é possível excluir o usuário administrador');

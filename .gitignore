@@ -1,5 +1,5 @@
 /vendor
-/assets/uploads
+public/assets/uploads
 /node_modules
 Homestead.yaml
 Homestead.json
