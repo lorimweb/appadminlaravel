@@ -15,12 +15,18 @@
 
 ##Instalação:
 =====
+1. composer install
+2. composer update
+
 #Migrações:
 1. php artisan migrate:install
 2. php artisan migrate
 
 #Seeds:
 1. php artisan db:seed
+
+#Key
+1. php artisan key:generate
 
 #Como usar:
 1. php artisan serve
